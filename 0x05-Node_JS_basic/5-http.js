@@ -87,7 +87,8 @@ const SERVER_ROUTE_HANDLERS = [
           res.write(Buffer.from(responseText));
         })
         .catch((err) => {
-          responseParts.push(err instanceof Error ? err.message : err.toString());
+          const errorMessage = err instanceof Error ? err.message : err.toString();
+          responseParts.push(errorMessage);
           const responseText = responseParts.join('\n');
           res.setHeader('Content-Type', 'text/plain');
           res.setHeader('Content-Length', responseText.length);
