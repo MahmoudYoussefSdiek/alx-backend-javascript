@@ -19,7 +19,8 @@ class StudentsController {
           return 0;
         };
 
-        for (const [field, group] of Object.entries(studentGroups).sort(cmpFxn)) {
+        for (const [field, group] of
+          Object.entries(studentGroups).sort(cmpFxn)) {
           responseParts.push([
             `Number of students in ${field}: ${group.length}.`,
             'List:',
@@ -48,8 +49,9 @@ class StudentsController {
         let responseText = '';
 
         if (Object.keys(studentGroups).includes(major)) {
-          const group = studentGroups[major];
-          responseText = `List: ${group.map((student) => student.firstname).join(', ')}`;
+            const group = studentGroups[major];
+            const studentList = group.map((student) => student.firstname).join(', ');
+            responseText = `List: ${studentList}`;
         }
         response.status(200).send(responseText);
       })
